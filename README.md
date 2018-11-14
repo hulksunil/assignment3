@@ -9,7 +9,6 @@ public class HangmanGame{
     
     runGame(word);
     
-    
     reader.close();
   }
   
@@ -78,7 +77,7 @@ public class HangmanGame{
     if(toUpperCase(word.charAt(0))==toUpperCase(a)){
       return 0;
     }
-    else if(toUpperCase(word.charAt(1))==toUpperCase(a)){
+    else if(toUpperCase(word.charAt(1))==toUpperCase(a)){ // word.charAt(3)==a
       return 1;
     }
     else if(toUpperCase(word.charAt(2))==toUpperCase(a)){
@@ -101,13 +100,13 @@ public class HangmanGame{
     return a;
   }
   
-  //This is the game loop
+  //The Game Part
   public static void runGame(String word){
     Scanner player = new Scanner(System.in); //The person guessing the word
     boolean first=false,second=false,third=false,fourth=false;
     int misses = 0;
     
-    //The Game Part
+    //This is the Game loop 
     //While the player doesn't have a full body hanged or the full word. Keep asking for a new letter
     while(misses!=6 && (first==false || second==false || third==false || fourth==false)){
       printHanging(misses);
@@ -116,7 +115,7 @@ public class HangmanGame{
       char a = player.next().charAt(0);
       
       int guess=isLetterInWord(word,a);
-      if(guess==0){
+      if(guess == 0){
         first=true;
       }
       else if(guess==1){
